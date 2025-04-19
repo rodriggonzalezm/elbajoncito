@@ -2,152 +2,213 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Pizzas El Bajoncito - El mejor bajón nocturno en Plottier. ¡Pedí tu muza, napolitana, especial y más al toque!">
-  <title>🍕 El Bajoncito | Plottier</title>
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pizzas El Bajoncito</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    html { scroll-behavior: smooth; }
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(135deg, #0f0f0f, #151515);
-      position: relative;
-      overflow-x: hidden;
-      overflow-y: auto;
-      font-family: 'Arial', sans-serif;
-    }
-    main {
-      flex: 1;
-      position: relative;
-      z-index: 1;
-      padding-bottom: 50px;
+      font-family: 'Orbitron', sans-serif;
+      color: #f4f4f4;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
     }
     .glow {
-      text-shadow: 0 0 15px #facc15, 0 0 30px #ffea00, 0 0 60px #ffea00;
+      text-shadow: 0 0 10px #fff, 0 0 20px #facc15, 0 0 30px #facc15;
     }
-    .floating-btn {
+    .btn-glow {
+      background-color: #facc15;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      box-shadow: 0 0 15px #facc15;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .btn-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #facc15, 0 0 30px #facc15;
+    }
+    .menu-card {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .menu-card:hover {
+      transform: scale(1.05);
+    }
+    nav {
+      backdrop-filter: blur(10px);
+    }
+    .social-buttons {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 50;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .floating-pizza {
-      position: absolute;
-      z-index: -1;
-      opacity: 0.8;
-      animation: float 8s ease-in-out infinite;
+    .social-buttons a {
+      background-color: #facc15;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
+      transition: transform 0.2s ease;
     }
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-40px) rotate(15deg);
-      }
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
+    .social-buttons a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.8);
     }
-    .stars {
-      position: absolute;
+    /* Animación Cargando */
+    #loading {
+      position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-      z-index: -2;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
     }
-    .neon-effect {
-      color: #0ef0ff;
-      text-shadow: 0 0 20px #0ef0ff, 0 0 30px #0ef0ff, 0 0 40px #0ef0ff;
+    #loading p {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      animation: glow 1.5s infinite alternate;
     }
-    .btn-wsp {
-      display: inline-block;
-      background-color: #25D366;
-      padding: 12px 20px;
-      color: white;
-      font-size: 18px;
-      border-radius: 50px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      text-decoration: none;
-      transition: transform 0.3s, background-color 0.3s;
-    }
-    .btn-wsp:hover {
-      transform: scale(1.1);
-      background-color: #128C7E;
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #facc15, 0 0 30px #facc15;
+      }
+      100% {
+        text-shadow: 0 0 20px #fff, 0 0 40px #facc15, 0 0 60px #facc15;
+      }
     }
   </style>
 </head>
-<body class="text-white overflow-x-hidden">
+<body>
 
-  <div class="stars"></div>
+  <!-- Cargando Bajoncito -->
+  <div id="loading">
+    <p>Cargando Bajoncito...</p>
+  </div>
 
-  <main>
-    <!-- Hero -->
-    <section class="h-screen flex flex-col justify-center items-center text-center p-6" data-aos="fade-up">
-      <h1 class="text-5xl md:text-7xl font-bold mb-4 text-yellow-400 glow neon-effect">🍕 El Bajoncito</h1>
-      <p class="text-xl md:text-2xl text-zinc-300">¡Las pizzas que salvan tu noche en el universo! 🚀</p>
-      <div class="mt-8 flex flex-wrap gap-6 justify-center">
-        <a href="https://wa.me/5492994680198" target="_blank" class="btn-wsp">
-          📲 2994680198
-        </a>
-        <a href="https://wa.me/5492994082755" target="_blank" class="btn-wsp">
-          📲 2994082755
-        </a>
+  <!-- Partículas -->
+  <div id="particles-js" class="fixed inset-0 -z-10"></div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 w-full bg-black bg-opacity-60 border-b border-yellow-500">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-6">
+      <h1 class="text-yellow-400 text-2xl font-bold glow">El Bajoncito</h1>
+      <div class="space-x-6 text-sm md:text-base text-center">
+        <a href="#hero" class="text-yellow-300 hover:text-white transition">Inicio</a>
+        <a href="#menu" class="text-yellow-300 hover:text-white transition">Menú</a>
+        <a href="#quienes" class="text-yellow-300 hover:text-white transition">Quiénes somos</a>
       </div>
-      <!-- Pizzas flotantes -->
-      <img src="https://res.cloudinary.com/dqqbdnefo/image/upload/v1745018486/afeja1bkcixr8spacgds.png" alt="Pizza Neon" class="floating-pizza top-10 left-10 w-32" />
-      <img src="https://res.cloudinary.com/dqqbdnefo/image/upload/v1745018486/afeja1bkcixr8spacgds.png" alt="Pizza Neon" class="floating-pizza top-32 right-10 w-40" />
-    </section>
+    </div>
+  </nav>
 
-    <!-- Menú -->
-    <section class="max-w-4xl mx-auto py-16 px-6" data-aos="fade-up">
-      <h2 class="text-4xl font-bold text-center text-yellow-400 mb-12 glow neon-effect">🍽️ Menú Galáctico de Pizzas</h2>
-      <div class="grid md:grid-cols-2 gap-6 text-lg text-white">
-        <div class="flex justify-between border-b pb-2 border-zinc-700">
-          <span>Muzzarella Estelar</span><span class="text-yellow-300">$13.000</span>
-        </div>
-        <div class="flex justify-between border-b pb-2 border-zinc-700">
-          <span>Fugazzeta Intergaláctica</span><span class="text-yellow-300">$14.500</span>
-        </div>
-        <div class="flex justify-between border-b pb-2 border-zinc-700">
-          <span>Especial Nebulosa</span><span class="text-yellow-300">$15.500</span>
-        </div>
-        <div class="flex justify-between border-b pb-2 border-zinc-700">
-          <span>Napolitana Cometa</span><span class="text-yellow-300">$15.000</span>
-        </div>
-        <div class="flex justify-between border-b pb-2 border-zinc-700">
-          <span>Palmitos Cósmicos</span><span class="text-yellow-300">$17.000</span>
-        </div>
-        <div class="flex justify-between border-b pb-2 border-zinc-700">
-          <span>Jamón y Queso Universal</span><span class="text-yellow-300">$14.000</span>
-        </div>
-      </div>
-    </section>
+  <!-- Hero -->
+  <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-4">
+    <h1 class="text-5xl md:text-6xl font-bold text-yellow-400 glow mb-6">🚀 Pizzas El Bajoncito</h1>
+    <p class="text-lg text-zinc-300 max-w-xl mb-8">¡Explorá los sabores más galácticos de <strong>Plottier</strong>! Hacemos envíos hasta las 00:00.</p>
+    <a href="https://wa.me/5492994680198" target="_blank" class="btn-glow">Pedí por WhatsApp</a>
+    <br>
+    <a href="https://wa.me/5492994082755" target="_blank" class="btn-glow">Pedí por WhatsApp</a>
+  </section>
 
-    <!-- Ubicación -->
-    <section class="bg-zinc-800 py-12 text-center" data-aos="fade-up">
-      <h3 class="text-3xl font-semibold text-yellow-400 mb-4 glow">📍 Estamos en Plottier, ¡cerca del agujero negro!</h3>
-      <p class="text-zinc-300 text-lg">Hacemos entregas estelares y con toda la facha. ¡Pedí ya tu bajón cósmico!</p>
-    </section>
-  </main>
+  <!-- Menú -->
+  <section id="menu" class="py-20 px-6 max-w-5xl mx-auto" data-aos="fade-up">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-center text-yellow-400 mb-14 glow">🍕 Menú Galáctico</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Muzzarella Estelar</h3><p class="text-zinc-300">Clásica, irresistible y con un toque fuera de este mundo.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$13.000</p></div>
+      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Fugazzeta Lunar</h3><p class="text-zinc-300">Queso derretido con cebolla orbitando en cada bocado.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$14.500</p></div>
+      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Especial Bajón</h3><p class="text-zinc-300">Para cuando el hambre es de otro planeta 🌌.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$15.500</p></div>
+      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Napolitana Cósmica</h3><p class="text-zinc-300">Tomates del espacio profundo y mucho sabor.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$15.000</p></div>
+      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Palmitos Interplanetarios</h3><p class="text-zinc-300">Una combinación cremosa que despegó desde otra galaxia 🚀.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$17.000</p></div>
+      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Jamón y Queso Galáctico</h3><p class="text-zinc-300">Un clásico universal que nunca falla.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$14.000</p></div>
+    </div>
+  </section>
+
+  <!-- Quiénes somos -->
+  <section id="quienes" class="py-20 px-6 max-w-3xl mx-auto" data-aos="fade-up">
+    <h2 class="text-4xl font-extrabold text-center text-yellow-400 mb-10 glow">🌠 Quiénes Somos</h2>
+    <div class="bg-[#1a1a1a] p-6 text-center text-zinc-300 rounded-xl shadow-lg">
+      <p>Somos <strong>El Bajoncito</strong>, una pizzería artesanal de <strong>Plottier</strong> dedicada a calmar los antojos nocturnos con sabores que te llevan a otro planeta. Cada pizza está hecha con ingredientes seleccionados y pasión por el buen comer.</p>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-zinc-900 text-center py-6 text-zinc-400 text-sm">
-    © 2025 El Bajoncito 🍕 - Desarrollado con 💻 por <a href="https://portafolio-inky-delta.vercel.app" target="_blank" class="underline hover:text-yellow-300">Rodrigo González</a>
+  <footer class="py-10 bg-black text-center text-zinc-300">
+    <p>&copy; 2025 El Bajoncito. Todos los derechos reservados.</p>
+    <p class="text-yellow-400 mt-2">Hecho por <a href="https://portafolio-inky-delta.vercel.app/" target="_blank" class="hover:text-white">Rodri Dev</a></p>
   </footer>
 
-  <!-- Floating WhatsApp -->
-  <div class="floating-btn">
-    <a href="https://wa.me/5492994680198" target="_blank">
-      <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp" class="hover:scale-110 transition transform hover:scale-125" />
-    </a>
+  <!-- Redes Sociales -->
+  <div class="social-buttons">
+    <a href="https://www.instagram.com/pizzas_elbajoncito/" target="_blank" class="text-white hover:text-yellow-400"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="50" height="50" /></a>
   </div>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    AOS.init();
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+      }, 1000);  // Tiempo de espera de 1 segundo
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#facc15' },
+        shape: {
+          type: 'circle',
+          stroke: { width: 0, color: '#facc15' }
+        },
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: { enable: true, speed: 1, opacity_min: 0, sync: false }
+        },
+        size: {
+          value: 5,
+          random: true,
+          anim: { enable: true, speed: 2, size_min: 0.1, sync: false }
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: 'out',
+          bounce: false,
+          attract: { enable: false, rotateX: 600, rotateY: 1200 }
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: 'repulse' }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+
 </body>
 </html>
