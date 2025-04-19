@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,7 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Orbitron', sans-serif;
       color: #f4f4f4;
@@ -16,9 +20,11 @@
       margin: 0;
       padding: 0;
     }
+
     .glow {
       text-shadow: 0 0 10px #fff, 0 0 20px #facc15, 0 0 30px #facc15;
     }
+
     .btn-glow {
       background-color: #facc15;
       color: #000;
@@ -28,10 +34,12 @@
       box-shadow: 0 0 15px #facc15;
       transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
+
     .btn-glow:hover {
       transform: scale(1.05);
       box-shadow: 0 0 20px #facc15, 0 0 30px #facc15;
     }
+
     .menu-card {
       background: #1a1a1a;
       padding: 1.5rem;
@@ -40,12 +48,15 @@
       box-shadow: 0 0 10px rgba(250, 204, 21, 0.1);
       transition: transform 0.3s ease;
     }
+
     .menu-card:hover {
       transform: scale(1.05);
     }
+
     nav {
       backdrop-filter: blur(10px);
     }
+
     .social-buttons {
       position: fixed;
       bottom: 20px;
@@ -55,6 +66,7 @@
       flex-direction: column;
       gap: 10px;
     }
+
     .social-buttons a {
       background-color: #facc15;
       padding: 10px;
@@ -62,10 +74,12 @@
       box-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
       transition: transform 0.2s ease;
     }
+
     .social-buttons a:hover {
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(250, 204, 21, 0.8);
     }
+
     /* Animación Cargando */
     #loading {
       position: fixed;
@@ -79,6 +93,7 @@
       align-items: center;
       z-index: 9999;
     }
+
     #loading p {
       color: #fff;
       font-size: 2rem;
@@ -87,16 +102,19 @@
       letter-spacing: 3px;
       animation: glow 1.5s infinite alternate;
     }
+
     @keyframes glow {
       0% {
         text-shadow: 0 0 10px #fff, 0 0 20px #facc15, 0 0 30px #facc15;
       }
+
       100% {
         text-shadow: 0 0 20px #fff, 0 0 40px #facc15, 0 0 60px #facc15;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Cargando Bajoncito -->
@@ -122,22 +140,67 @@
   <!-- Hero -->
   <section id="hero" class="min-h-screen flex flex-col justify-center items-center text-center px-4">
     <h1 class="text-5xl md:text-6xl font-bold text-yellow-400 glow mb-6">🚀 Pizzas El Bajoncito</h1>
-    <p class="text-lg text-zinc-300 max-w-xl mb-8">¡Explorá los sabores más galácticos de <strong>Plottier</strong>! Hacemos envíos hasta las 00:00.</p>
-    <a href="https://wa.me/5492994680198" target="_blank" class="btn-glow">Pedí por WhatsApp</a>
-    <br>
-    <a href="https://wa.me/5492994082755" target="_blank" class="btn-glow">Pedí por WhatsApp</a>
+    <p class="text-lg text-zinc-300 max-w-xl mb-8">
+      ¡Explorá los sabores más galácticos de <strong>Plottier</strong>! Hacemos envíos hasta las 00:00.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="https://wa.me/5492994680198" target="_blank"
+        class="btn-glow flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24">
+          <path
+            d="M20.52 3.48A11.929 11.929 0 0012.002 0C5.373 0 0 5.373 0 12a11.953 11.953 0 001.691 6.059L0 24l6.118-1.654A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12 0-3.194-1.21-6.202-3.48-8.52zm-8.518 17.1a9.728 9.728 0 01-4.974-1.364l-.356-.211-3.635.983.974-3.55-.23-.365a9.723 9.723 0 01-1.502-5.217c0-5.378 4.374-9.752 9.752-9.752 2.608 0 5.058 1.016 6.895 2.854a9.702 9.702 0 012.857 6.897c0 5.378-4.374 9.752-9.752 9.752zm5.412-7.304c-.296-.148-1.75-.867-2.022-.966-.272-.099-.47-.148-.667.15-.198.296-.767.966-.94 1.164-.173.198-.347.223-.644.074-.296-.149-1.25-.46-2.38-1.464-.88-.786-1.474-1.753-1.647-2.05-.173-.297-.018-.458.13-.606.134-.134.297-.347.446-.52.148-.173.198-.297.297-.495.099-.198.05-.372-.025-.52-.075-.148-.667-1.611-.913-2.209-.24-.578-.484-.5-.667-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.476s1.065 2.872 1.213 3.07c.148.198 2.095 3.2 5.077 4.486.71.306 1.263.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.75-.715 2.003-1.404.248-.688.248-1.277.173-1.404-.074-.124-.272-.198-.57-.347z" />
+        </svg>
+        Pedí por WhatsApp (Opción 1)
+      </a>
+
+      <a href="https://wa.me/5492994082755" target="_blank"
+        class="btn-glow flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5" viewBox="0 0 24 24">
+          <path
+            d="M20.52 3.48A11.929 11.929 0 0012.002 0C5.373 0 0 5.373 0 12a11.953 11.953 0 001.691 6.059L0 24l6.118-1.654A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12 0-3.194-1.21-6.202-3.48-8.52zm-8.518 17.1a9.728 9.728 0 01-4.974-1.364l-.356-.211-3.635.983.974-3.55-.23-.365a9.723 9.723 0 01-1.502-5.217c0-5.378 4.374-9.752 9.752-9.752 2.608 0 5.058 1.016 6.895 2.854a9.702 9.702 0 012.857 6.897c0 5.378-4.374 9.752-9.752 9.752zm5.412-7.304c-.296-.148-1.75-.867-2.022-.966-.272-.099-.47-.148-.667.15-.198.296-.767.966-.94 1.164-.173.198-.347.223-.644.074-.296-.149-1.25-.46-2.38-1.464-.88-.786-1.474-1.753-1.647-2.05-.173-.297-.018-.458.13-.606.134-.134.297-.347.446-.52.148-.173.198-.297.297-.495.099-.198.05-.372-.025-.52-.075-.148-.667-1.611-.913-2.209-.24-.578-.484-.5-.667-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.476s1.065 2.872 1.213 3.07c.148.198 2.095 3.2 5.077 4.486.71.306 1.263.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.75-.715 2.003-1.404.248-.688.248-1.277.173-1.404-.074-.124-.272-.198-.57-.347z" />
+        </svg>
+        Pedí por WhatsApp (Opción 2)
+      </a>
+    </div>
   </section>
+
+
 
   <!-- Menú -->
   <section id="menu" class="py-20 px-6 max-w-5xl mx-auto" data-aos="fade-up">
     <h2 class="text-4xl md:text-5xl font-extrabold text-center text-yellow-400 mb-14 glow">🍕 Menú Galáctico</h2>
     <div class="grid md:grid-cols-2 gap-8">
-      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Muzzarella Estelar</h3><p class="text-zinc-300">Clásica, irresistible y con un toque fuera de este mundo.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$13.000</p></div>
-      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Fugazzeta Lunar</h3><p class="text-zinc-300">Queso derretido con cebolla orbitando en cada bocado.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$14.500</p></div>
-      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Especial Bajón</h3><p class="text-zinc-300">Para cuando el hambre es de otro planeta 🌌.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$15.500</p></div>
-      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Napolitana Cósmica</h3><p class="text-zinc-300">Tomates del espacio profundo y mucho sabor.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$15.000</p></div>
-      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Palmitos Interplanetarios</h3><p class="text-zinc-300">Una combinación cremosa que despegó desde otra galaxia 🚀.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$17.000</p></div>
-      <div class="menu-card"><h3 class="text-2xl font-bold mb-2 text-yellow-300">Jamón y Queso Galáctico</h3><p class="text-zinc-300">Un clásico universal que nunca falla.</p><p class="mt-2 text-yellow-400 font-semibold text-lg">$14.000</p></div>
+      <div class="menu-card">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">Muzzarella Estelar</h3>
+        <p class="text-zinc-300">Clásica, irresistible y con un toque fuera de este mundo.</p>
+        <p class="mt-2 text-yellow-400 font-semibold text-lg">$13.000</p>
+      </div>
+      <div class="menu-card">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">Fugazzeta Lunar</h3>
+        <p class="text-zinc-300">Queso derretido con cebolla orbitando en cada bocado.</p>
+        <p class="mt-2 text-yellow-400 font-semibold text-lg">$14.500</p>
+      </div>
+      <div class="menu-card">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">Especial Bajón</h3>
+        <p class="text-zinc-300">Para cuando el hambre es de otro planeta 🌌.</p>
+        <p class="mt-2 text-yellow-400 font-semibold text-lg">$15.500</p>
+      </div>
+      <div class="menu-card">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">Napolitana Cósmica</h3>
+        <p class="text-zinc-300">Tomates del espacio profundo y mucho sabor.</p>
+        <p class="mt-2 text-yellow-400 font-semibold text-lg">$15.000</p>
+      </div>
+      <div class="menu-card">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">Palmitos Interplanetarios</h3>
+        <p class="text-zinc-300">Una combinación cremosa que despegó desde otra galaxia 🚀.</p>
+        <p class="mt-2 text-yellow-400 font-semibold text-lg">$17.000</p>
+      </div>
+      <div class="menu-card">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">Jamón y Queso Galáctico</h3>
+        <p class="text-zinc-300">Un clásico universal que nunca falla.</p>
+        <p class="mt-2 text-yellow-400 font-semibold text-lg">$14.000</p>
+      </div>
     </div>
   </section>
 
@@ -145,19 +208,25 @@
   <section id="quienes" class="py-20 px-6 max-w-3xl mx-auto" data-aos="fade-up">
     <h2 class="text-4xl font-extrabold text-center text-yellow-400 mb-10 glow">🌠 Quiénes Somos</h2>
     <div class="bg-[#1a1a1a] p-6 text-center text-zinc-300 rounded-xl shadow-lg">
-      <p>Somos <strong>El Bajoncito</strong>, una pizzería artesanal de <strong>Plottier</strong> dedicada a calmar los antojos nocturnos con sabores que te llevan a otro planeta. Cada pizza está hecha con ingredientes seleccionados y pasión por el buen comer.</p>
+      <p>Somos <strong>El Bajoncito</strong>, una pizzería artesanal de <strong>Plottier</strong> dedicada a calmar los
+        antojos nocturnos con sabores que te llevan a otro planeta. Cada pizza está hecha con ingredientes seleccionados
+        y pasión por el buen comer.</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="py-10 bg-black text-center text-zinc-300">
     <p>&copy; 2025 El Bajoncito. Todos los derechos reservados.</p>
-    <p class="text-yellow-400 mt-2">Hecho por <a href="https://portafolio-inky-delta.vercel.app/" target="_blank" class="hover:text-white">Rodri Dev</a></p>
+    <p class="text-yellow-400 mt-2">Hecho por <a href="https://portafolio-inky-delta.vercel.app/" target="_blank"
+        class="hover:text-white">Rodri Dev</a></p>
   </footer>
 
   <!-- Redes Sociales -->
   <div class="social-buttons">
-    <a href="https://www.instagram.com/pizzas_elbajoncito/" target="_blank" class="text-white hover:text-yellow-400"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="50" height="50" /></a>
+    <a href="https://www.instagram.com/pizzas_elbajoncito/" target="_blank"
+      class="text-white hover:text-yellow-400"><img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="50"
+        height="50" /></a>
   </div>
 
   <!-- Scripts -->
@@ -211,4 +280,5 @@
   </script>
 
 </body>
+
 </html>
